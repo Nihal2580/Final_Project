@@ -1,0 +1,48 @@
+<div style=" margin-top: 50px;">
+    <nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+        <div class="parent">
+            <div class="child">
+                <div nz-row class="imgDiv">
+                    <h2 style="margin-left: 230px;">Order Details</h2>
+                </div>
+
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="placeOrder()">
+                    <div nz-row>
+
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <input nz-input placeholder="Address" formControlName="address" />
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <textarea rows="1" nz-input placeholder="Description"
+                                        formControlName="orderDescription"></textarea>
+                                </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                        <div nz-col nzSpan="24">
+                            <nz-form-item>
+                                <nz-form-control nzHasFeedback [nzXs]="24" nzErrorTip="This Input Is Required!">
+                                    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a Payment Mathod"
+                                        formControlName="payment">
+                                        <nz-option *ngFor="let payment of Payment" nzLabel={{payment}}
+                                            nzValue={{payment}}></nz-option>
+                                    </nz-select> </nz-form-control>
+                            </nz-form-item>
+                        </div>
+
+                    </div>
+
+                    <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Place</button>
+                </form>
+            </div>
+        </div>
+    </nz-spin>
+</div>

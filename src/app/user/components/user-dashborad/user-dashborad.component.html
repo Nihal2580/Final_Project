@@ -1,0 +1,28 @@
+<form nz-form [formGroup]="validateForm" style="margin-top: 20px; text-align:center;" (submit)="submitForm()">
+    <input nz-input placeholder="Enter Keyword to search" nzSize="large" style="width: 20%;" formControlName="title" />
+    <button nz-button [nzSize]="size" nzType="primary" style="margin-left: 15px;"
+        [disabled]="validateForm.invalid">Search Category</button>
+</form>
+
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'" nzTip="Working...">
+    <nz-table #basicTable [nzData]="categories" [nzPageSize]="20" [nzShowPagination]="'false'">
+        <thead>
+            <tr>
+                <th style="font-weight: bolder; color: #003973;">Category Name</th>
+                <th style="font-weight: bolder; color: #003973;">Description</th>
+                <th style="font-weight: bolder; color: #003973;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let category of basicTable.data">
+                <td>{{category.name}}</td>
+                <td style="font-weight:600 ;">{{category.description}}</td>
+                <td>
+                    <button style="margin-left: 10px;" nzSize="small" nz-button nzType="primary"
+                        routerLink="/user/products/{{category.id}}" nzDanger>View Products
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+</nz-spin>
